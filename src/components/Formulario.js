@@ -1,8 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CategoriasContext } from "../context/CategoriasContext";
+import { RecetasContext } from "../context/RecetasContext";
 
 const Formulario = () => {
   const { categoria } = useContext(CategoriasContext);
+  const { fetchBusqueda } = useContext(RecetasContext);
+
+  const [busqueda, setBusqueda] = useState({
+    nombre: "",
+    categoria: "",
+  });
+
+  const handleChange = (e) => {
+    setBusqueda({
+      ...busqueda,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <form className="col-12">
@@ -17,11 +31,21 @@ const Formulario = () => {
             name="nombre"
             className="form-control"
             placeholder="Buscar por ingrediente"
+            onChange={handleChange}
           />
         </div>
         <div className="col-md-4">
-          <select name="categoria" className="form-control">
+          <select
+            name="categoria"
+            className="form-control"
+            onChange={handleChange}
+          >
             <option value=""> Selecionar Categoría</option>
+            {categoria.map(({ strCategory }) => (
+              <option key={strCategory} value={strCategory}>
+                {strCategory}
+              </option>
+            ))}
           </select>
         </div>
 
