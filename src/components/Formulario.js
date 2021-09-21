@@ -19,7 +19,13 @@ const Formulario = () => {
   };
 
   return (
-    <form className="col-12">
+    <form
+      className="col-12"
+      onSubmit={(e) => {
+        e.preventDefault();
+        fetchBusqueda(busqueda);
+      }}
+    >
       <fieldset className="text-center">
         <legend>Busca bebidas por categoría o ingrediente.</legend>
       </fieldset>
