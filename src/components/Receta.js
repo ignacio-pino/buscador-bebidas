@@ -61,12 +61,13 @@ const Receta = ({ receta }) => {
               handleOpen();
             }}
           >
-            Ver Receta
+            View Recipe
           </button>
 
           <Modal
             open={open}
             onClose={() => {
+              setIdreceta(null);
               handleClose();
             }}
           >

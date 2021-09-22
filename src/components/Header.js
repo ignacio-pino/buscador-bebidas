@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <header className="bg-alert">
-      <h1> Busca Recetas de Bebidas</h1>
+      <h1> Find drinks and their recipes</h1>
     </header>
   );
 };
