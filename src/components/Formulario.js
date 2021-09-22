@@ -31,7 +31,7 @@ const Formulario = () => {
       </fieldset>
 
       <div className="row mt-4">
-        <div className="col-md-4">
+        <div className="col-md-4 mt-2">
           <input
             type="text"
             name="nombre"
@@ -40,7 +40,7 @@ const Formulario = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 mt-2">
           <select
             name="categoria"
             className="form-control"
@@ -55,7 +55,7 @@ const Formulario = () => {
           </select>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-4 mt-2">
           <input
             type="submit"
             value="Buscar bebidas"
