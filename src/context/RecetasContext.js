@@ -27,7 +27,7 @@ const RecetasProvider = (props) => {
   }, [busqueda, categoria, nombre]);
 
   return (
-    <RecetasContext.Provider value={{ fetchBusqueda }}>
+    <RecetasContext.Provider value={{ fetchBusqueda, recetas }}>
       {props.children}
     </RecetasContext.Provider>
   );
