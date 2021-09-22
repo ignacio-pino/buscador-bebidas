@@ -2,8 +2,8 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="bg-alert">
-      <h1> Find drinks and their recipes</h1>
+    <header className="bg-info">
+      <h1> Find your drink!</h1>
     </header>
   );
 };

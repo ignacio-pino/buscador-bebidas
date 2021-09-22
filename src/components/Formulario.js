@@ -59,7 +59,7 @@ const Formulario = () => {
           <input
             type="submit"
             value="Find drinks"
-            className="btn btn-block btn-primary"
+            className="btn btn-block btn-info"
           />
         </div>
       </div>

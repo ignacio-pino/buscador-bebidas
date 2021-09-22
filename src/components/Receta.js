@@ -44,7 +44,7 @@ const Receta = ({ receta }) => {
 
   return (
     <div className="col-md-4 mb-3">
-      <div className="card">
+      <div className="card text-center rounded-bottom">
         <img
           className="card-img-top"
           src={imagen}
@@ -54,7 +54,7 @@ const Receta = ({ receta }) => {
 
         <div className="card-body">
           <button
-            className="btn btn-block btn-primary"
+            className="btn btn-block btn-outline-info"
             type="button"
             onClick={() => {
               setIdreceta(id);
