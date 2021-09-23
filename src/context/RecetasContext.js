@@ -4,12 +4,12 @@ import axios from "axios";
 const RecetasProvider = (props) => {
   const [recetas, setRecetas] = useState([]);
 
-  const [busqueda, fetchBusqueda] = useState({
+  const [busquedas, fetchBusqueda] = useState({
     nombre: "",
     categoria: "",
   });
 
-  const { nombre, categoria } = busqueda;
+  const { nombre, categoria } = busquedas;
 
   useEffect(() => {
     if (nombre.trim() === "") {
@@ -17,17 +17,17 @@ const RecetasProvider = (props) => {
     }
 
     const consultarAPI = async () => {
+      setRecetas([]);
       const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${nombre}&c=${categoria}`;
       const resultado = await axios.get(url);
-
       setRecetas(resultado.data.drinks);
     };
 
     consultarAPI();
-  }, [busqueda, categoria, nombre]);
+  }, [busquedas]);
 
   return (
-    <RecetasContext.Provider value={{ fetchBusqueda, recetas }}>
+    <RecetasContext.Provider value={{ fetchBusqueda, recetas, busquedas }}>
       {props.children}
     </RecetasContext.Provider>
   );

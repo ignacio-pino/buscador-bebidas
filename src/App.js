@@ -4,7 +4,6 @@ import Formulario from "./components/Formulario";
 import CategoriasProvider from "./context/CategoriasContext";
 import RecetasProvider from "./context/RecetasContext";
 import ModalProvider from "./context/ModalContext";
-import Listado from "./components/Listado";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
             <div className="row">
               <Formulario />
             </div>
-            <Listado />
           </div>
         </ModalProvider>
       </RecetasProvider>
