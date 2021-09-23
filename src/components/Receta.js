@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import { ModalContext } from "../context/ModalContext";
+import Spinner from "./Spinner";
 
 function getModalStyle() {
   const top = 50;
@@ -40,7 +41,28 @@ const Receta = ({ receta }) => {
 
   const { idDrink: id, strDrink: nombre, strDrinkThumb: imagen } = receta;
 
-  const { setIdreceta } = useContext(ModalContext);
+  const { setIdreceta, ingredientes, setIngredientes } =
+    useContext(ModalContext);
+
+  const listarIngredientes = (informacion) => {
+    let ingredientes = [];
+    for (let i = 1; i < 16; i++) {
+      if (informacion[`strIngredient${i}`]) {
+        ingredientes.push(
+          <li
+            className="list-group-item d-flex justify-content-between align-items-center"
+            key={i}
+          >
+            {informacion[`strIngredient${i}`]}
+            <span className="badge badge-info">
+              {informacion[`strMeasure${i}`]}
+            </span>
+          </li>
+        );
+      }
+    }
+    return ingredientes;
+  };
 
   return (
     <div className="col-md-4 mb-3">
@@ -68,11 +90,22 @@ const Receta = ({ receta }) => {
             open={open}
             onClose={() => {
               setIdreceta(null);
+              setIngredientes([]);
               handleClose();
             }}
           >
             <div style={modalStyle} className={classes.paper}>
-              <h1>lol</h1>
+              {ingredientes.length === 0 && <Spinner />}
+              <h5 className="text-center mb-3">{nombre}</h5>
+              <img
+                src={ingredientes.strDrinkThumb}
+                alt={nombre}
+                className="img-thumbnail"
+              />
+              <p className="text-center m-3">{ingredientes.strInstructions}</p>
+              <ul className="list-group list-group-flush">
+                {listarIngredientes(ingredientes)}
+              </ul>
             </div>
           </Modal>
         </div>
